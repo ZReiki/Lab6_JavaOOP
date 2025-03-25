@@ -14,7 +14,7 @@ public class PatientController {
     private final PatientRepositoryBinaryImpl binaryFileService = new PatientRepositoryBinaryImpl();
     private final PatientRepositoryJSONImpl jsonFileService = new PatientRepositoryJSONImpl();
 
-    public void chooseListOperations(ArrayList<Patient> patients){
+    public void chooseListOperations(List<Patient> patients){
         exitLabel:
         while (true) {
             // write menu options
@@ -73,7 +73,7 @@ public class PatientController {
         fileManagement(patients);
     }
 
-    public void fileManagement(ArrayList<Patient> patients){
+    public void fileManagement(List<Patient> patients){
         exitLabel:
         while(true) {
             menuOptions.menuFileManagement();
@@ -113,7 +113,7 @@ public class PatientController {
         chooseListOperations(patients);
     }
 
-    public void controller(ArrayList<Patient> patients) {
+    public void controller(List<Patient> patients) {
         chooseListOperations(patients);
     }
 }

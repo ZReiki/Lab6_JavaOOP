@@ -9,10 +9,11 @@ import main.logic.PatientRepository;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PatientRepositoryJSONImpl implements PatientRepository {
     @Override
-    public void outputList(ArrayList<Patient> patients, File file) {
+    public void outputList(List<Patient> patients, File file) {
         try (Writer writer = new FileWriter(file)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(patients, writer);
@@ -22,13 +23,13 @@ public class PatientRepositoryJSONImpl implements PatientRepository {
     }
 
     @Override
-    public void outputList(ArrayList<Patient> patients, String fileName) {
+    public void outputList(List<Patient> patients, String fileName) {
         File file = new File(fileName);
         outputList(patients, file);
     }
 
     @Override
-    public ArrayList<Patient> readList(File file) {
+    public List<Patient> readList(File file) {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Type listType = new TypeToken<ArrayList<Patient>>() {}.getType();
@@ -39,7 +40,7 @@ public class PatientRepositoryJSONImpl implements PatientRepository {
     }
 
     @Override
-    public ArrayList<Patient> readList(String fileName) {
+    public List<Patient> readList(String fileName) {
         File file = new File(fileName);
         return readList(file);
     }

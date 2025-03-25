@@ -4,7 +4,7 @@ import main.logic.Patient;
 import java.util.*;
 
 public class View {
-    public void showPatient(ArrayList<Patient>  patients) {
+    public void showPatient(List<Patient> patients) {
         if (!patients.isEmpty()) {
             for (Patient patient : patients) {
                 System.out.println(patient);

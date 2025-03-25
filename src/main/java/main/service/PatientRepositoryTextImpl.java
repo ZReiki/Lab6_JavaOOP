@@ -10,7 +10,7 @@ import java.util.*;
 
 public class PatientRepositoryTextImpl implements PatientRepository {
     @Override
-    public void outputList(ArrayList<Patient> patients, File file){
+    public void outputList(List<Patient> patients, File file){
         try(PrintWriter out = new PrintWriter(Files.newBufferedWriter(file.toPath(), StandardCharsets.UTF_8))){
             if(patients != null){
                 for(Patient patient : patients){
@@ -30,13 +30,13 @@ public class PatientRepositoryTextImpl implements PatientRepository {
     }
 
     @Override
-    public void outputList(ArrayList<Patient> patients, String fileName){
+    public void outputList(List<Patient> patients, String fileName){
         File file = new File(fileName);
         outputList(patients, file);
     }
 
     @Override
-    public ArrayList<Patient> readList(File file){
+    public List<Patient> readList(File file){
         List<Patient> patients = new ArrayList<>();
         try(BufferedReader in = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8)) {
             String line;
@@ -62,7 +62,7 @@ public class PatientRepositoryTextImpl implements PatientRepository {
     }
 
     @Override
-    public ArrayList<Patient> readList(String fileName){
+    public List<Patient> readList(String fileName){
         File file = new File(fileName);
         return readList(file);
     }

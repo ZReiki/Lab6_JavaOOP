@@ -5,7 +5,7 @@ import main.logic.Patient;
 import java.util.*;
 
 public class PatientService {
-    public ArrayList<Patient> listOfPatientsWithTheSpecifiedDiagnosis(ArrayList<Patient> patients, String diagnosis){
+    public List<Patient> listOfPatientsWithTheSpecifiedDiagnosis(List<Patient> patients, String diagnosis){
         var resultList = new ArrayList<Patient>();
         for (Patient patient : patients){
             if(patient.getMedicalDiagnosis().equals(diagnosis)){
@@ -15,7 +15,7 @@ public class PatientService {
         return resultList;
     }
 
-    public ArrayList<Patient> listOfPatientsWhoseMedicalRecordNumberIsWithinTheSpecifiedInterval(ArrayList<Patient> patients, int minInterval, int maxInterval){
+    public List<Patient> listOfPatientsWhoseMedicalRecordNumberIsWithinTheSpecifiedInterval(List<Patient> patients, int minInterval, int maxInterval){
         var resultList = new ArrayList<Patient>();
         for (Patient patient : patients){
             if(patient.getMedicalRecordNumber() >= minInterval && patient.getMedicalRecordNumber() <= maxInterval){
@@ -25,7 +25,7 @@ public class PatientService {
         return resultList;
     }
 
-    public ArrayList<Patient> quantityAndListOfPatientsWhosePhoneNumberBeginsWithTheSpecifiedDigit(ArrayList<Patient> patients, String phoneNumberDigit){
+    public List<Patient> quantityAndListOfPatientsWhosePhoneNumberBeginsWithTheSpecifiedDigit(List<Patient> patients, String phoneNumberDigit){
         var resultList = new ArrayList<Patient>();
         for (Patient patient : patients){
             String phoneNumberFirstDigit = patient.getPhoneNumber().substring(4, 5);
@@ -39,8 +39,8 @@ public class PatientService {
     //Список пацієнтів у порядку спадання кількості візитів у поточному році. Якщо вона
     //однакова - за зростанням номерів медичної картки.
 
-    public ArrayList<Patient> listOfPatientsByCurrentYearVisitCount(ArrayList<Patient> patients){
-        ArrayList<Patient> t = new ArrayList<>(patients);
+    public List<Patient> listOfPatientsByCurrentYearVisitCount(List<Patient> patients){
+        List<Patient> t = new ArrayList<>(patients);
         t.sort(new Comparator<>() {
             @Override
             public int compare(Patient o1, Patient o2) {
@@ -54,7 +54,7 @@ public class PatientService {
         return t;
     }
 
-    public int findPatientByName(ArrayList<Patient> patients, String name){
+    public int findPatientByName(List<Patient> patients, String name){
         for(Patient patient : patients){
             if(name.compareTo(patient.getFullName()) == 0){
                 return patient.getMedicalRecordNumber();

@@ -3,9 +3,10 @@ package main.factory;
 import main.logic.Patient;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PatientFactory {
-    public static ArrayList<Patient> createPatient(){
+    public static List<Patient> createPatient(){
         ArrayList<Patient> patients = new ArrayList<>();
         patients.add(new Patient(1, "Petrenko Oleksandr Ivanovych", "15 Khreshchatyk St., Kyiv, Ukraine",
             "+380671234567", 202401, "Hypertension", "10.12.2024", 4));
